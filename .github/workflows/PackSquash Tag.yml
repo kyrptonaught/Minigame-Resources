@@ -1,36 +1,51 @@
-name: PackSquash On Tag
+name: PackSquash on Tag
+
 on:
   push:
     tags:
-      - '**'
+      - "**"
 
 jobs:
   packsquash:
+    name: Optimize ${{ matrix.pack }}
+    runs-on: ubuntu-24.04-arm
     strategy:
       matrix:
-        pack: [vanilla, cartoon, chinese-mythology, city, fallout, fantasy, festive, greek-mythology, halloween, natural, plastic, steampunk]
-    runs-on: ubuntu-latest
+        pack:
+          [
+            vanilla,
+            cartoon,
+            chinese-mythology,
+            city,
+            fallout,
+            fantasy,
+            festive,
+            greek-mythology,
+            halloween,
+            natural,
+            plastic,
+            steampunk,
+          ]
     steps:
-      - uses: actions/checkout@v6
+      - name: Clone Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
-      - name: Extract
-        working-directory: ./Packs
-        run: 7z x 'PackSquash CLI executable (x86_64-unknown-linux-musl).zip'
-
-      - name: CHMOD
-        working-directory: ./Packs
-        run: chmod +x packsquash
-
-      - name: Squash All Packs
-        working-directory: ./Packs
-        run: |
-          chmod +x packsquash
-          mkdir out
-          printf "allow_mods = ['OptiFine']\nzip_spec_conformance_level = 'high'\nnever_store_squash_times = true\npack_directory = \"%s\"\noutput_file_path = \"out/%s.zip\"" "${{ matrix.pack }}" "${{ matrix.pack }}"> packsquash-options.toml
-          ./packsquash packsquash-options.toml
+      - name: Run PackSquash
+        uses: ComunidadAylas/PackSquash-action@v4
+        with:
+          artifact_name: packsquash-${{ matrix.pack }}
+          packsquash_version: v0.4.1
+          options: |
+            pack_directory = 'Packs/${{ matrix.pack }}'
+            output_file_path = '/tmp/${{ matrix.pack }}.zip'
+            allow_mods = ['OptiFine']
+            zip_spec_conformance_level = 'high'
+            never_store_squash_times = true
 
       - name: Release Packs
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "Packs/out/${{ matrix.pack }}.zip"
           allowUpdates: true
+          artifacts: "/tmp/${{ matrix.pack }}.zip"
