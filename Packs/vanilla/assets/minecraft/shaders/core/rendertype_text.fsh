@@ -36,12 +36,11 @@ vec4 panorama() {
 }
 
 void main() {
-    vec4 color = texture(Sampler0, texCoord0);
+    vec4 color = texture(Sampler0, texCoord0) * vertexColor;
     int control = int(fx + 0.5);
     if (control == 1) color = panorama();
-    color *= vertexColor * ColorModulator;
-    if (color.a < 0.1) {
+    if (color.a == 0.0) {
         discard;
     }
-    fragColor = apply_fog(color, sphericalVertexDistance, cylindricalVertexDistance, FogEnvironmentalStart, FogEnvironmentalEnd, FogRenderDistanceStart, FogRenderDistanceEnd, FogColor);
+    fragColor = color * ColorModulator;
 }

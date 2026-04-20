@@ -85,7 +85,7 @@ void main() {
     }
     else { // Normal text.
         gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
-        vertexColor = Color * texelFetch(Sampler2, UV2 / 16, 0);
+        vertexColor = Color;// * texelFetch(Sampler2, UV2 / 16, 0);
     }
     sphericalVertexDistance = fog_spherical_distance(Position);
     cylindricalVertexDistance = fog_cylindrical_distance(Position);
