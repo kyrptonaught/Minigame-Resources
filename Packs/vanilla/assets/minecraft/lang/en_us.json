@@ -1,9 +1,18 @@
 {
   "gui.years": "%s year(s)",
   "gui.months": "%s month(s)",
+
   "chatdisabler.chatdisabled": "Chat is temporarily disabled, your message was not sent.",
   "chatdisabler.enablechat.disabled": "Chat has temporarily been disabled. Other players will not see your messages.",
   "chatdisabler.enablechat.enabled": "Chat has been re-enabled. Other players can now receive your messages.",
+
+  "prohibitor.punishment.ban" : "Ban",
+  "prohibitor.punishment.mute" : "Mute",
+  "prohibitor.punishment.warn" : "Warn",
+  "prohibitor.punishment.kick" : "Kick",
+  "prohibitor.punishment.skinban" : "SkinBan",
+  "prohibitor.punishment.missed" : "Missed Messages",
+
   "prohibitor.linking.disabled": "Discord Linking is temporarily disabled",
   "punishment.reason": "Reason: %s",
   "punishment.expires": "Expires in: %s",
@@ -12,6 +21,7 @@
   "prohibitor.mute.cannotsent": "You are muted, your messages will not be sent",
   "prohibitor.mute.unmuted": "You have been unmuted",
   "disconnect.backend": "Unable to check Player Status",
+
   "heirloom.loading.tt.download": "Downloading terrain",
   "heirloom.loading.tt.1.pre": "\uF806\uF808\uF80A\uF80A",
   "heirloom.loading.tt.1.t1": "\uF801\uF809\uF809\uF80A\uF80B\uF80B\uF80B\uF80B\uF80BRemember to explore the area while trying to survive. Each map contains",
@@ -98,9 +108,10 @@
   "config.lem.battle.chest_refill_timer.name": "Chest Refill Time",
   "config.lem.battle.chest_refill_particles.name": "Chest Particles",
   "config.lem.battle.chest_refill_glow.name": "Chest Glow",
-  "config.lem.battle.take_everything_enabled.name": "Enabled",
-  "config.lem.battle.take_everything_delete_not_drop.name": "Delete Item",
-  "config.lem.battle.take_everything_swap_ignore_enchats.name": "Ignore Enchants",
+  "config.lem.battle.take_everything_enabled.name": "Take Everything: Enabled",
+  "config.lem.battle.take_everything_delete_not_drop.name": "Take Everything: Delete Item",
+  "config.lem.battle.take_everything_swap_ignore_enchats.name": "Take Everything: Ignore Enchants",
+  "config.lem.battle.take_everything_fill_offhand.name": "Take Everything: Stack into Offhand",
   "config.lem.battle.invulnerability_timer.name": "Invunverability Time",
   "config.lem.battle.round_length.name": "Round Length",
   "config.lem.battle.showdown_duration.name": "Showdown Duration",
